@@ -1,0 +1,2 @@
+# CestovatelskyDenik
+Cestovatelky denik 
