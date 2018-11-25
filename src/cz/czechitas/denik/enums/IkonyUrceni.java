@@ -1,5 +1,12 @@
 package cz.czechitas.denik.enums;
 
 public enum IkonyUrceni {
-PES,DITE,INVALIDA;
+	PES(1), DITE(2), INVALIDA(3);
+
+	private final int ikony_urceni;
+
+	private IkonyUrceni(int ikony_urceni) {
+		this.ikony_urceni = ikony_urceni;
+	}
+
 }
