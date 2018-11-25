@@ -7,12 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cz.czechitas.denik.controller.ListController;
+
+
 /**
  * Servlet implementation class DenikServlet
  */
 @WebServlet("/DenikServlet")
 public class DenikServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private ListController listController = new ListController();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,8 +32,13 @@ public class DenikServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+		
+		String action = request.getParameter("action");
+		 if (action.equals("list")){
+				 listController.handle(request,response);}
+		}
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

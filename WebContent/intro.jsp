@@ -129,11 +129,14 @@
         </form>
       </div>
     </div>
+    
+   <%--
     <div class="navbar">
       <div class="dropdown">
         <button class="dropbtn">Vyber podle priorit 
           <i class="fa fa-caret-down"></i>
         </button>
+        
         <div class="dropdown-content">
         <form action="DenikServlet" method ="get">
         <p>  <button type="submit" name = "filter" value = "1">Výlet vhodný pro psy </button>  </p>
@@ -143,5 +146,6 @@
         </div>        
       </div> 
     </div>
+     --%> 
  </body>
 </html>
