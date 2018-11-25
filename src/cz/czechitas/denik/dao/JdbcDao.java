@@ -15,9 +15,9 @@ import cz.czechitas.denik.bean.Record;
 import cz.czechitas.denik.bean.RecordList;
 
 public class JdbcDao implements UserDao {
-	private static final String LOADALLRECORDSFROMDB = "select idzapis,jmeno_autor,nazev_vylet,zapis,"
+	private static final String LOADALLRECORDSFROMDB = "select id_zapis,jmeno_autor,nazev_vylet,zapis,"
 			+ " ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu";
-	private static final String INSERTSINGLERECORDINTODB = "INSERT INTO Zaznam_vyletu (idzapis,jmeno_autor,nazev_vylet,zapis, "
+	private static final String INSERTSINGLERECORDINTODB = "INSERT INTO Zaznam_vyletu (id_zapis,jmeno_autor,nazev_vylet,zapis, "
 			+ "ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu) "
 			+ "VALUE (?,?,?,?,?,?,?,?,?,?)";
 	
@@ -51,7 +51,7 @@ public class JdbcDao implements UserDao {
 		try (Connection con = ds.getConnection(); PreparedStatement stmt = con.prepareStatement(LOADALLRECORDSFROMDB)) {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Record record = new Record(rs.getInt("idzapis"), rs.getString("jmeno_autor"),
+				Record record = new Record(rs.getInt("id_zapis"), rs.getString("jmeno_autor"),
 						rs.getString("nazev_vylet"), rs.getString("zapis"), null, null, rs.getString("odkaz_vylet"),
 						rs.getString("odkaz_restaurace"), null, rs.getInt("hodnoceni"));
 				listOfRecordsFromDb.add(record);
@@ -73,7 +73,7 @@ public class JdbcDao implements UserDao {
 	private DataSource getDataSource() {
 		try {
 			Context ctx = new InitialContext();
-			return (DataSource) ctx.lookup("java:/comp/env/jdbc/cestovatelskydenik"); // pro nas projekt
+			return (DataSource) ctx.lookup("java:/comp/env/cestovatelskydenikResource"); // pro nas projekt
 																						// java:/comp/env/jdbc/cestovatelskydenik
 		} catch (NamingException e) {
 			e.printStackTrace();
