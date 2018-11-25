@@ -14,14 +14,33 @@ import javax.sql.DataSource;
 import cz.czechitas.denik.bean.Record;
 import cz.czechitas.denik.bean.RecordList;
 
-
 public class JdbcDao implements UserDao {
-	private static final String LOADALLRECORDSFROMDB = "select idzapis,jmeno_autor,nazev_vylet,zapis, ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu"; 
-
+	private static final String LOADALLRECORDSFROMDB = "select idzapis,jmeno_autor,nazev_vylet,zapis,"
+			+ " ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu";
+	private static final String INSERTSINGLERECORDINTODB = "INSERT INTO Zaznam_vyletu (idzapis,jmeno_autor,nazev_vylet,zapis, "
+			+ "ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu) "
+			+ "VALUE (?,?,?,?,?,?,?,?,?,?)";
+	
 	@Override
-	public boolean save(Record record) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean insertSingleRecordIntoDb(Record record) {
+
+		DataSource ds = getDataSource();
+		try (Connection con = ds.getConnection(); PreparedStatement stmt = con.prepareStatement(INSERTSINGLERECORDINTODB)) {
+			stmt.setString(1, record.getJmeno_autor());
+			stmt.setString(2, record.getNazev_vylet());
+			stmt.setInt(3, record.getIkony_urceni().getIkony_urceni());
+			stmt.setInt(4, record.getIkony_vylet().getIkony_vylet());
+			stmt.setString(5, record.getOdkaz_misto());
+			stmt.setString(6, record.getOdkaz_restaurace()); 
+			stmt.setInt(7, record.getHodnoceni());
+
+			stmt.executeUpdate();
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -31,20 +50,18 @@ public class JdbcDao implements UserDao {
 		DataSource ds = getDataSource(); // volam metodu getDataSource - neni nadefinovana
 		try (Connection con = ds.getConnection(); PreparedStatement stmt = con.prepareStatement(LOADALLRECORDSFROMDB)) {
 			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) { 
-				Record record = new Record(rs.getInt("idzapis"), rs.getString("jmeno_autor"), rs.getString("nazev_vylet"), 
-											rs.getString("zapis"), null, null, 
-											rs.getString("odkaz_vylet"), rs.getString("odkaz_restaurace"), null, 
-											rs.getInt("hodnoceni"));
+			while (rs.next()) {
+				Record record = new Record(rs.getInt("idzapis"), rs.getString("jmeno_autor"),
+						rs.getString("nazev_vylet"), rs.getString("zapis"), null, null, rs.getString("odkaz_vylet"),
+						rs.getString("odkaz_restaurace"), null, rs.getInt("hodnoceni"));
 				listOfRecordsFromDb.add(record);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-			recordList.setListOfRecordsFromDb(listOfRecordsFromDb);
-			return recordList;
-			
-		
+		recordList.setListOfRecordsFromDb(listOfRecordsFromDb);
+		return recordList;
+
 	}
 
 	@Override
@@ -53,15 +70,15 @@ public class JdbcDao implements UserDao {
 		return null;
 	}
 
-	
 	private DataSource getDataSource() {
 		try {
 			Context ctx = new InitialContext();
-			return (DataSource) ctx.lookup("java:/comp/env/jdbc/cestovatelskydenik"); //pro nas projekt java:/comp/env/jdbc/cestovatelskydenik
+			return (DataSource) ctx.lookup("java:/comp/env/jdbc/cestovatelskydenik"); // pro nas projekt
+																						// java:/comp/env/jdbc/cestovatelskydenik
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 		return null;
 	};
-}
 
+}

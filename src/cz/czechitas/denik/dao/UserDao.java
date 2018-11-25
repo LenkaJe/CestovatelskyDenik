@@ -4,7 +4,7 @@ import cz.czechitas.denik.bean.Record;
 import cz.czechitas.denik.bean.RecordList;
 
 public interface UserDao {
-	boolean save(Record record);
+	boolean insertSingleRecordIntoDb(Record record);
 
 	RecordList loadAllRecordsFromDb();
 	

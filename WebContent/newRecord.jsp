@@ -113,46 +113,46 @@ body, html {
 </head>
 
 <body>
-<form action="DenikServlet" method= "get">
+	<form action="DenikServlet" method="get">
 
-	<div class="hero-image">
-		<div class="hero-text">
-			<h1 style="font-size: 25px">Nový zápis</h1>
-			&nbsp
-			<p>Řekni nám o svém výletu o místě, které stojí za to ho
-				navštívit... Pověz co tam bylo nejlepší nebo nejhezčí? Doporuč nám
-				kde ti chutnalo ...</p>
+		<div class="hero-image">
+			<div class="hero-text">
+				<h1 style="font-size: 25px">Nový zápis</h1>
+				&nbsp;
+				<p>Řekni nám o svém výletu o místě, které stojí za to ho
+					navštívit... Pověz co tam bylo nejlepší nebo nejhezčí? Doporuč nám
+					kde ti chutnalo ...</p>
 
-			<label><b>Autor</b></label> <input type="text"
-				placeholder="Vlož svou přezdívku/jméno" name="jmeno_autor" required>
-			&nbsp
-			<p>
-				<label><b>Název výletu</b></label> <input type="text"
-					placeholder="Vlož název místa výletu" name="nazev_vylet" required>
-			</p>
+				<label><b>Autor</b></label> <input type="text"
+					placeholder="Vlož svou přezdívku/jméno" name="jmeno_autor" required>
+				&nbsp;
+				<p>
+					<label><b>Název výletu</b></label> <input type="text"
+						placeholder="Vlož název místa výletu" name="nazev_vylet" required>
+				</p>
 
+			</div>
 		</div>
-	</div>
 
-	<div class="hero-zaznam">
-		&nbsp;
-		<textarea name="zapis" style="width: 300px; height: 300px">
+		<div class="hero-zaznam">
+			&nbsp;
+			<textarea name="zapis" style="width: 300px; height: 300px">
     Milý deníčku,
   </textarea>
-	</div>
-
-	<div class="hero-odkaz">
-		<div class="hero-textmimo">
-			Máš webové stránky MÍSTA, o kterém vyprávíš? Vlož je zde: <input
-				type="url" name=odkaz_misto>
-			<p></p>
-			Máš webové stránky RESTAURACE/HOSPŮDKY,kde ti chutnalo? Vlož je zde:
-			<input type="url" name=odkaz_restaurace>
 		</div>
-	</div>
+
+		<div class="hero-odkaz">
+			<div class="hero-textmimo">
+				Máš webové stránky MÍSTA, o kterém vyprávíš? Vlož je zde: <input
+					type="url" name=odkaz_misto>
+				<p></p>
+				Máš webové stránky RESTAURACE/HOSPŮDKY,kde ti chutnalo? Vlož je zde:
+				<input type="url" name=odkaz_restaurace>
+			</div>
+		</div>
 	</form>
 	<div class="radio">
-		<form action="DenikServlet" method= "get">
+		<form action="DenikServlet" method="get">
 			<input type="radio" name="ikony_urceni" value="pes"> Pes<br>
 			<input type="radio" name="ikony_urceni" value="dite">Dítě <br>
 			<input type="radio" name="ikony_urceni" value="invalida">
@@ -163,7 +163,7 @@ body, html {
 	</div>
 
 	<div class="radio2">
-		<form action="DenikServlet" method= "get">
+		<form action="DenikServlet" method="get">
 			<input type="radio" name="ikony_vylet" value="hrad"> Hrad<br>
 			<input type="radio" name="ikony_vylet" value="zamek"> Zámek<br>
 			<input type="radio" name="ikony_vylet" value="rozhledna">
@@ -173,11 +173,11 @@ body, html {
 
 		</form>
 	</div>
-	<form action="DenikServlet" method= "get">
-        <button  type="submit" name = "action" value="insert">Ulož</button>
-    </div>
-    </form>
-  
+	<form action="DenikServlet" method="get">
+		<button type="submit" name="action" value="insert">Ulož</button>
+
+	</form>
+
 </body>
 </html>
 
