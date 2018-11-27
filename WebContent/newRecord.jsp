@@ -8,16 +8,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<style>
 body, html {
 	height: 100%;
 	margin: 0;
 	font-family: Calibri, Calibri, sans-serif;
 }
 
+
 .hero-image {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("kroko.jpg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) url("kroko.jpg");
 	height: 50%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -96,19 +97,74 @@ body, html {
 	text-align: left;
 	position: fixed;
 	top: 50%;
-	left: 90%;
+	left: 70%;
 	background-position: right;
 	color: #C7986C;
 }
 
+	i{
+	font-size: 25px;
+    color: #C7986C
+    }
+
 .radio2 {
 	text-align: left;
 	position: fixed;
-	top: 60%;
-	left: 90%;
+	top: 50%;
+	left: 80%;
 	background-position: right;
 	color: #C7986C;
 }
+
+.btn-uloz {
+	position: fixed;
+	top: 90%;
+	left: 70%;
+	background-position: right;
+}
+	
+.rating {	
+	position: fixed;
+	top: 44%;
+	left: 30%;
+	background-position: right;}
+
+.rating { 
+  border: none;
+  float: left;
+  font-size: 30px;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+  float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+	
 </style>
 </head>
 
@@ -128,8 +184,16 @@ body, html {
 				&nbsp;
 				<p>
 					<label><b>Název výletu</b></label> <input type="text"
-						placeholder="Vlož název místa výletu" name="nazev_vylet" required>
+						placeholder="Vlož název místa, které jsi navštívil" name="nazev_vylet" required>
 				</p>
+				&nbsp;
+				Vyber okres výletu 
+   				<select name="okres">
+     			<option value="Praha">Praha</option>
+      			<option value="Benešov">Benešov</option>
+      			<option value="Beroun">Beroun</option>
+      			<option value="Kladno">Kladno</option>
+   				</select>
 
 			</div>
 		</div>
@@ -153,31 +217,49 @@ body, html {
 	</form>
 	<div class="radio">
 		<form action="DenikServlet" method="get">
-			<input type="radio" name="ikony_urceni" value="pes"> Pes<br>
-			<input type="radio" name="ikony_urceni" value="dite">Dítě <br>
-			<input type="radio" name="ikony_urceni" value="invalida">
-			Invalida<br>
-
+			<p>Výlet je vhodný pro</p>
+    <input type="radio" name="ikony_urceni" value="pes" title="pes"> <i class="fas fa-dog" title="pes"></i> <br>
+    <br>
+    <input type="radio" name="ikony_urceni" value="dite"> <i class="fas fa-child" title ="dítě"></i><br>
+    <br>
+    <input type="radio" name="ikony_urceni" value="invalida" > <i class="fab fa-accessible-icon" title="invalida"></i><br>
 		</form>
 
 	</div>
+	<br>
 
 	<div class="radio2">
 		<form action="DenikServlet" method="get">
-			<input type="radio" name="ikony_vylet" value="hrad"> Hrad<br>
-			<input type="radio" name="ikony_vylet" value="zamek"> Zámek<br>
-			<input type="radio" name="ikony_vylet" value="rozhledna">
-			rozhledna<br> <input type="radio" name="ikony_vylet" value="les">
-			Les<br> <input type="radio" name="ikony_vylet" value="hory">
-			Hory<br>
-
+			<p>Hlavní atrakce výletu </p>
+    <input type="radio" name="ikony_vylet" value="hrad"><i class="fab fa-fort-awesome" title="hrad/zámek"> </i> <br>
+    <br>
+    <input type="radio" name="ikony_vylet" value="kostel" ><i class="fas fa-church" title="kostel"></i><br>
+    <br>
+    <input type="radio" name="ikony_vylet" value="rozhledna">  <i class="fas fa-chess-rook" title="rozhledna"></i><br>
+    <br>
+    <input type="radio" name="ikony_vylet" value="les"> <i class="fas fa-tree" title="les"></i><i class="fas fa-tree" title="les"></i><br>
+    <br>
+    <input type="radio" name="ikony_vylet" value="hory"> <i class="fas fa-mountain" title="hory"></i><br>
+    <br>
+    <input type="radio" name="ikony_vylet" value="mesto"> <i class="fas fa-city" title="mesto"></i><br>
 		</form>
 	</div>
+	<div class ="btn-uloz">
 	<form action="DenikServlet" method="get">
-		<button type="submit" name="action" value="insert">Ulož</button>
-
+		<button type="submit" name="action" value="insert" class ="btn-uloz">Ulož zápis <i class="fas fa-check-circle"></i></button>
 	</form>
-
+	</div>
+ <fieldset class="rating">
+      <input type="radio" id="star5" name="hodnoceni" value="5" /><label class = "full" for="star5" title="Musíte vidět"></label> <br>
+      <br>
+      <input type="radio" id="star4" name="hodnoceni" value="4" /><label class = "full" for="star4" title="Stojí za návštěvu"></label><br>
+      <br>
+      <input type="radio" id="star3" name="hodnoceni" value="3" /><label class = "full" for="star3" title="Dobré"></label><br>
+      <br>
+      <input type="radio" id="star2" name="hodnoceni" value="2" /><label class = "full" for="star2" title="Čekal jsem víc"></label><br>
+      <br>
+      <input type="radio" id="star1" name="hodnoceni" value="1" /><label class = "full" for="star1" title="Nestojí za návštěvu"></label>
+    </fieldset>
 </body>
 </html>
 

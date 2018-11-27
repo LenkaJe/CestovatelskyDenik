@@ -13,7 +13,7 @@ public class Record {
 	private IkonyVylet ikony_vylet;
 	private String odkaz_misto;
 	private String odkaz_restaurace;
-	private Double longlat;
+	private String okres;
 	private Integer hodnoceni;
 	
 	
@@ -23,7 +23,7 @@ public class Record {
 	}
 	
 	public Record(Integer idzapis, String jmeno_autor, String nazev_vylet, String zapis, IkonyUrceni ikony_urceni,
-			IkonyVylet ikony_vylet, String odkaz_misto, String odkaz_restaurace, Double longlat, Integer hodnoceni) {
+			IkonyVylet ikony_vylet, String odkaz_misto, String odkaz_restaurace, String okres, Integer hodnoceni) {
 		super();
 		this.idzapis = idzapis;
 		this.jmeno_autor = jmeno_autor;
@@ -33,7 +33,6 @@ public class Record {
 		this.ikony_vylet = ikony_vylet;
 		this.odkaz_misto = odkaz_misto;
 		this.odkaz_restaurace = odkaz_restaurace;
-		this.longlat = longlat;
 		this.hodnoceni = hodnoceni;
 	}
 
@@ -86,17 +85,20 @@ public class Record {
 	public void setOdkaz_restaurace(String odkaz_restaurace) {
 		this.odkaz_restaurace = odkaz_restaurace;
 	}
-	public Double getLonglat() {
-		return longlat;
-	}
-	public void setLonglat(Double longlat) {
-		this.longlat = longlat;
-	}
+
 	public Integer getHodnoceni() {
 		return hodnoceni;
 	}
 	public void setHodnoceni(Integer hodnoceni) {
 		this.hodnoceni = hodnoceni;
+	}
+
+	public String getOkres() {
+		return okres;
+	}
+
+	public void setOkres(String okres) {
+		this.okres = okres;
 	}
 	
 	

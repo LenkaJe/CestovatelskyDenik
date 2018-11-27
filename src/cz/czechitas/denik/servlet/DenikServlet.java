@@ -39,14 +39,16 @@ public class DenikServlet extends HttpServlet {
 		switch (action) {
 			case "list" : 
 				listController.handle(request, response);
+				getServletConfig().getServletContext().getRequestDispatcher("/recordList.jsp").forward(request, response); 
 				break;
 			case "insert" : 
 				insertController.handle(request,response);
+				getServletConfig().getServletContext().getRequestDispatcher("/intro.jsp").forward(request, response);
 				break; 
 			default :
 	            System.out.println("Akce nebyla rozpoznána.");
 		}
-	}
+		}
 
 	// response.getWriter().append("Served at: ").append(request.getContextPath());
 

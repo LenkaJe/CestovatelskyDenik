@@ -16,7 +16,7 @@ import cz.czechitas.denik.bean.RecordList;
 
 public class JdbcDao implements UserDao {
 	private static final String LOADALLRECORDSFROMDB = "select id_zapis,jmeno_autor,nazev_vylet,zapis,"
-			+ " ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu";
+			+ " ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace, hodnoceni from cestovatelskydenik.Zaznam_vyletu";
 	private static final String INSERTSINGLERECORDINTODB = "INSERT INTO Zaznam_vyletu (id_zapis,jmeno_autor,nazev_vylet,zapis, "
 			+ "ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu) "
 			+ "VALUE (?,?,?,?,?,?,?,?,?,?)";
@@ -47,13 +47,13 @@ public class JdbcDao implements UserDao {
 	public RecordList loadAllRecordsFromDb() {
 		RecordList recordList = new RecordList();
 		ArrayList<Record> listOfRecordsFromDb = new ArrayList<>();
-		DataSource ds = getDataSource(); // volam metodu getDataSource - neni nadefinovana
+		DataSource ds = getDataSource(); // volam metodu getDataSource 
 		try (Connection con = ds.getConnection(); PreparedStatement stmt = con.prepareStatement(LOADALLRECORDSFROMDB)) {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Record record = new Record(rs.getInt("id_zapis"), rs.getString("jmeno_autor"),
-						rs.getString("nazev_vylet"), rs.getString("zapis"), null, null, rs.getString("odkaz_vylet"),
-						rs.getString("odkaz_restaurace"), null, rs.getInt("hodnoceni"));
+						rs.getString("nazev_vylet"), rs.getString("zapis"), null , null, rs.getString("odkaz_vylet"),
+						rs.getString("odkaz_restaurace"), rs.getString("okres"), rs.getInt("hodnoceni"));
 				listOfRecordsFromDb.add(record);
 			}
 		} catch (SQLException e) {
@@ -73,8 +73,7 @@ public class JdbcDao implements UserDao {
 	private DataSource getDataSource() {
 		try {
 			Context ctx = new InitialContext();
-			return (DataSource) ctx.lookup("java:/comp/env/cestovatelskydenikResource"); // pro nas projekt
-																						// java:/comp/env/jdbc/cestovatelskydenik
+			return (DataSource) ctx.lookup("java:/comp/env/cestovatelskydenikResource"); 
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
