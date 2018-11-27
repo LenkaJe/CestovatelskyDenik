@@ -15,6 +15,7 @@ public class InsertController {
 		IkonyVylet ikony_vylet = null;
 		String odkaz_misto = request.getParameter("odkaz_misto");
 		String odkaz_restaurace = request.getParameter("odkaz_restaurace");
-		Integer hodnoceni = Integer.parseInt(request.getParameter("hodnoceni"));;
+		Integer hodnoceni = Integer.parseInt(request.getParameter("hodnoceni"));
+		
 	};
 }

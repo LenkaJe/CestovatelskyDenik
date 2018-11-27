@@ -16,9 +16,9 @@ import cz.czechitas.denik.bean.RecordList;
 
 public class JdbcDao implements UserDao {
 	private static final String LOADALLRECORDSFROMDB = "select id_zapis,jmeno_autor,nazev_vylet,zapis,"
-			+ " ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace, hodnoceni from cestovatelskydenik.Zaznam_vyletu";
+			+ " ikony_urceni,ikony_vylet,odkaz_misto, odkaz_restaurace, hodnoceni, okres from cestovatelskydenik.Zaznam_vyletu";
 	private static final String INSERTSINGLERECORDINTODB = "INSERT INTO Zaznam_vyletu (id_zapis,jmeno_autor,nazev_vylet,zapis, "
-			+ "ikony_urceni,ikony_vylet,odkza_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu) "
+			+ "ikony_urceni,ikony_vylet,odkaz_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu) "
 			+ "VALUE (?,?,?,?,?,?,?,?,?,?)";
 	
 	@Override
@@ -52,7 +52,7 @@ public class JdbcDao implements UserDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Record record = new Record(rs.getInt("id_zapis"), rs.getString("jmeno_autor"),
-						rs.getString("nazev_vylet"), rs.getString("zapis"), null , null, rs.getString("odkaz_vylet"),
+						rs.getString("nazev_vylet"), rs.getString("zapis"), null , null, rs.getString("odkaz_misto"),
 						rs.getString("odkaz_restaurace"), rs.getString("okres"), rs.getInt("hodnoceni"));
 				listOfRecordsFromDb.add(record);
 			}
