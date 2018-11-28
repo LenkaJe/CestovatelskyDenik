@@ -18,7 +18,7 @@ body, html {
 
 
 .hero-image {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) url("kroko.jpg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) URL("kroko.jpg")));
 	height: 50%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -169,10 +169,10 @@ body, html {
 </head>
 
 <body>
+	
 	<form action="DenikServlet" method="get">
-
-		<div class="hero-image">
-			<div class="hero-text">
+				<div class="hero-image">
+				<div class="hero-text">
 				<h1 style="font-size: 25px">Nový zápis</h1>
 				&nbsp;
 				<p>Řekni nám o svém výletu o místě, které stojí za to ho

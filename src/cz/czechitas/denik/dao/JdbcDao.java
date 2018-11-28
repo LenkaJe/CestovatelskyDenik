@@ -14,12 +14,15 @@ import javax.sql.DataSource;
 import cz.czechitas.denik.bean.Record;
 import cz.czechitas.denik.bean.RecordList;
 
+
 public class JdbcDao implements UserDao {
 	private static final String LOADALLRECORDSFROMDB = "select id_zapis,jmeno_autor,nazev_vylet,zapis,"
 			+ " ikony_urceni,ikony_vylet,odkaz_misto, odkaz_restaurace, hodnoceni, okres from cestovatelskydenik.Zaznam_vyletu";
 	private static final String INSERTSINGLERECORDINTODB = "INSERT INTO Zaznam_vyletu (id_zapis,jmeno_autor,nazev_vylet,zapis, "
 			+ "ikony_urceni,ikony_vylet,odkaz_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu) "
 			+ "VALUE (?,?,?,?,?,?,?,?,?,?)";
+	private static final String LOADSINGLERECORD = "select id_zapis,jmeno_autor,nazev_vylet,zapis,"
+			+ " ikony_urceni,ikony_vylet,odkaz_misto, odkaz_restaurace, hodnoceni, okres from cestovatelskydenik.Zaznam_vyletu where id_zapis = ?";
 	
 	@Override
 	public boolean insertSingleRecordIntoDb(Record record) {
@@ -52,7 +55,7 @@ public class JdbcDao implements UserDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Record record = new Record(rs.getInt("id_zapis"), rs.getString("jmeno_autor"),
-						rs.getString("nazev_vylet"), rs.getString("zapis"), null , null, rs.getString("odkaz_misto"),
+						rs.getString("nazev_vylet"), rs.getString("zapis"), null, null, rs.getString("odkaz_misto"),
 						rs.getString("odkaz_restaurace"), rs.getString("okres"), rs.getInt("hodnoceni"));
 				listOfRecordsFromDb.add(record);
 			}
@@ -65,9 +68,40 @@ public class JdbcDao implements UserDao {
 	}
 
 	@Override
-	public Record loadSingleRecord() {
-		// TODO Auto-generated method stub
-		return null;
+	public Record loadSingleRecord(int id_zapis) {
+	Record record = new Record ();
+	 String jmeno_autor = null;
+	 String nazev_vylet = null;
+	 String zapis = null;
+	 String odkaz_misto = null;
+	 String odkaz_restaurace = null;
+	 String okres = null;
+	 int hodnoceni = 0;
+	DataSource ds = getDataSource(); // volam metodu getDataSource 
+		try (Connection con = ds.getConnection(); PreparedStatement stmt = con.prepareStatement(LOADSINGLERECORD)) {
+			ResultSet rs = stmt.executeQuery();
+			 id_zapis = rs.getInt("id_zapis");
+			 jmeno_autor = rs.getString("jmeno_autor");
+			 nazev_vylet = rs.getString("nazev_vylet");
+			 zapis = rs.getString("zapis");
+			 odkaz_misto = rs.getString("odkaz_misto");
+			 odkaz_restaurace =rs.getString("odkaz_restaurace");
+			 okres = rs.getString("okres");
+			 hodnoceni = rs.getInt("hodnoceni");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();	
+		}
+		record.setIdzapis(id_zapis);
+		record.setJmeno_autor(jmeno_autor);
+		record.setNazev_vylet(nazev_vylet);
+		record.setZapis(zapis);
+		record.setOdkaz_misto(odkaz_misto);
+		record.setOdkaz_restaurace(odkaz_restaurace);
+		record.setOkres(okres);
+		record.setHodnoceni(hodnoceni);
+		
+		return record;
 	}
 
 	private DataSource getDataSource() {

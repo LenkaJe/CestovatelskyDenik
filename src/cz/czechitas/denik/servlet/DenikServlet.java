@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
+import cz.czechitas.denik.controller.DetailController;
 import cz.czechitas.denik.controller.ListController;
 
 /**
@@ -20,6 +19,7 @@ public class DenikServlet extends HttpServlet {
 
 	private ListController listController = new ListController();
 	private ListController insertController = new ListController();
+	private DetailController detailController = new DetailController();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -44,6 +44,10 @@ public class DenikServlet extends HttpServlet {
 			case "insert" : 
 				insertController.handle(request,response);
 				getServletConfig().getServletContext().getRequestDispatcher("/intro.jsp").forward(request, response);
+				break; 
+			case "detail" :
+				detailController.handle(request,response);
+				getServletConfig().getServletContext().getRequestDispatcher("/record.jsp").forward(request, response);
 				break; 
 			default :
 	            System.out.println("Akce nebyla rozpoznána.");

@@ -8,7 +8,7 @@ public interface UserDao {
 
 	RecordList loadAllRecordsFromDb();
 	
-	Record loadSingleRecord();
+	Record loadSingleRecord(int id_zapis);
 	
 	
 
