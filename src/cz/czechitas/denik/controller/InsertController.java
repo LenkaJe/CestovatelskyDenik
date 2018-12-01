@@ -14,6 +14,7 @@ public class InsertController {
 		System.out.println("debug_Verèa 1zaèatek controller");
 		//recordToInsertDb.setIdzapis(Integer.parseInt(request.getParameter("id_zapis")));
 		recordToInsertDb.setNazev_vylet(request.getParameter("nazev_vylet"));
+		recordToInsertDb.setJmeno_autor(request.getParameter("jmeno_autor"));
 		recordToInsertDb.setZapis(request.getParameter("zapis"));
 		recordToInsertDb.setOdkaz_misto(request.getParameter("odkaz_misto"));
 		recordToInsertDb.setOdkaz_restaurace(request.getParameter("odkaz_restaurace"));
