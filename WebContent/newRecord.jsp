@@ -169,6 +169,7 @@ body, html {
 </head>
 
 <body>
+
 	
 	<form action="DenikServlet" method="get">
 				<div class="hero-image">
@@ -274,46 +275,47 @@ body, html {
 		<div class="hero-odkaz">
 			<div class="hero-textmimo">
 				Máš webové stránky MÍSTA, o kterém vyprávíš? Vlož je zde: <input
-					type="url" name=odkaz_misto>
+					type="text" name=odkaz_misto>
 				<p></p>
 				Máš webové stránky RESTAURACE/HOSPŮDKY,kde ti chutnalo? Vlož je zde:
-				<input type="url" name=odkaz_restaurace>
+				<input type="text" name=odkaz_restaurace>
 			</div>
 		</div>
-	</form>
+	
 	<div class="radio">
-		<form action="DenikServlet" method="get">
+		
 			<p>Výlet je vhodný pro</p>
-    <input type="radio" name="ikony_urceni" value="pes" title="pes"> <i class="fas fa-dog" title="pes"></i> <br>
+    <input type="radio" name="ikona_urceni" value="pes" title="pes"> <i class="fas fa-dog" title="pes"></i> <br>
     <br>
-    <input type="radio" name="ikony_urceni" value="dite"> <i class="fas fa-child" title ="dítě"></i><br>
+    <input type="radio" name="ikona_urceni" value="dite"> <i class="fas fa-child" title ="dítě"></i><br>
     <br>
-    <input type="radio" name="ikony_urceni" value="invalida" > <i class="fab fa-accessible-icon" title="invalida"></i><br>
-		</form>
+    <input type="radio" name="ikona_urceni" value="invalida" > <i class="fab fa-accessible-icon" title="invalida"></i><br>
+	
 
 	</div>
 	<br>
 
 	<div class="radio2">
-		<form action="DenikServlet" method="get">
+		
 			<p>Hlavní atrakce výletu </p>
-    <input type="radio" name="ikony_vylet" value="hrad"><i class="fab fa-fort-awesome" title="hrad/zámek"> </i> <br>
+    <input type="radio" name="ikona_vylet" value="hrad"><i class="fab fa-fort-awesome" title="hrad/zámek"> </i> <br>
     <br>
-    <input type="radio" name="ikony_vylet" value="kostel" ><i class="fas fa-church" title="kostel"></i><br>
+    <input type="radio" name="ikona_vylet" value="kostel" ><i class="fas fa-church" title="kostel"></i><br>
     <br>
-    <input type="radio" name="ikony_vylet" value="rozhledna">  <i class="fas fa-chess-rook" title="rozhledna"></i><br>
+    <input type="radio" name="ikona_vylet" value="rozhledna">  <i class="fas fa-chess-rook" title="rozhledna"></i><br>
     <br>
-    <input type="radio" name="ikony_vylet" value="les"> <i class="fas fa-tree" title="les"></i><i class="fas fa-tree" title="les"></i><br>
+    <input type="radio" name="ikona_vylet" value="les"> <i class="fas fa-tree" title="les"></i><i class="fas fa-tree" title="les"></i><br>
     <br>
-    <input type="radio" name="ikony_vylet" value="hory"> <i class="fas fa-mountain" title="hory"></i><br>
+    <input type="radio" name="ikona_vylet" value="hory"> <i class="fas fa-mountain" title="hory"></i><br>
     <br>
-    <input type="radio" name="ikony_vylet" value="mesto"> <i class="fas fa-city" title="mesto"></i><br>
-		</form>
+    <input type="radio" name="ikona_vylet" value="mesto"> <i class="fas fa-city" title="mesto"></i><br>
+		
 	</div>
 	<div class ="btn-uloz">
-	<form action="DenikServlet" method="get">
+	
 		<button type="submit" name="action" value="insert" class ="btn-uloz">Ulož zápis <i class="fas fa-check-circle"></i></button>
-	</form>
+	
+	
 	</div>
  <fieldset class="rating">
       <input type="radio" id="star5" name="hodnoceni" value="5" /><label class = "full" for="star5" title="Musíte vidět"></label> <br>
@@ -326,6 +328,7 @@ body, html {
       <br>
       <input type="radio" id="star1" name="hodnoceni" value="1" /><label class = "full" for="star1" title="Nestojí za návštěvu"></label>
     </fieldset>
+    </form>
 </body>
 </html>
 

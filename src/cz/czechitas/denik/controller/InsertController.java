@@ -3,19 +3,28 @@ package cz.czechitas.denik.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cz.czechitas.denik.bean.Record;
+import cz.czechitas.denik.dao.JdbcDao;
 import cz.czechitas.denik.enums.IkonyUrceni;
 import cz.czechitas.denik.enums.IkonyVylet;
 
 public class InsertController {
 	public void handle(HttpServletRequest request, HttpServletResponse response) {
-		Integer idzapis = Integer.parseInt(request.getParameter("idzapis"));
-		String nazev_vylet =  request.getParameter("nazev_vylet");
-		String zapis =  request.getParameter("zapis");
-		IkonyUrceni ikony_urceni = null;
-		IkonyVylet ikony_vylet = null;
-		String odkaz_misto = request.getParameter("odkaz_misto");
-		String odkaz_restaurace = request.getParameter("odkaz_restaurace");
-		Integer hodnoceni = Integer.parseInt(request.getParameter("hodnoceni"));
+		Record recordToInsertDb = new Record();
+		System.out.println("debug_Verèa 1zaèatek controller");
+		//recordToInsertDb.setIdzapis(Integer.parseInt(request.getParameter("id_zapis")));
+		recordToInsertDb.setNazev_vylet(request.getParameter("nazev_vylet"));
+		recordToInsertDb.setJmeno_autor(request.getParameter("jmeno_autor"));
+		recordToInsertDb.setZapis(request.getParameter("zapis"));
+		recordToInsertDb.setOdkaz_misto(request.getParameter("odkaz_misto"));
+		recordToInsertDb.setOdkaz_restaurace(request.getParameter("odkaz_restaurace"));
+		recordToInsertDb.setHodnoceni(Integer.parseInt(request.getParameter("hodnoceni")));
+		recordToInsertDb.setIkony_urceni(IkonyUrceni.valueOf(request.getParameter("ikona_urceni").toUpperCase()));
+		recordToInsertDb.setIkony_vylet(IkonyVylet.valueOf(request.getParameter("ikona_vylet").toUpperCase()));
 		
+		JdbcDao jdbcDao = new JdbcDao();
+		jdbcDao.insertSingleRecordIntoDb(recordToInsertDb);
+		System.out.println("debug_Verèa insert controller");
+	
 	};
 }

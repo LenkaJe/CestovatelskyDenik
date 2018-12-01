@@ -22,9 +22,9 @@ public class JdbcDao implements UserDao {
 			" from Zaznam_vyletu zv, ikony_urceni iu, ikony_vylet iv\r\n" + 
 			" where zv.ikony_urceni = iu.id_ikony_urceni\r\n" + 
 			" and zv.ikony_vylet = iv.id_ikony_vylet";
-	private static final String INSERTSINGLERECORDINTODB = "INSERT INTO Zaznam_vyletu (id_zapis,jmeno_autor,nazev_vylet,zapis, "
-			+ "ikony_urceni,ikony_vylet,odkaz_misto, odkaz_restaurace,longlat, hodnoceni from Zaznam_vyletu) "
-			+ "VALUE (?,?,?,?,?,?,?,?,?,?)";
+	private static final String INSERTSINGLERECORDINTODB = "INSERT INTO Zaznam_vyletu (jmeno_autor,nazev_vylet,zapis, "
+			+ "ikony_urceni,ikony_vylet,odkaz_misto, odkaz_restaurace, hodnoceni, okres) "
+			+ "VALUE (?,?,?,?,?,?,?,?,?)";
 	private static final String LOADSINGLERECORD = "select zv.id_zapis,zv.jmeno_autor,zv.nazev_vylet,zv.zapis, iu.hodnoty_urceni,iv.hodnoty_ikony_vylet,zv.odkaz_misto, zv.odkaz_restaurace, zv.hodnoceni, zv.okres \r\n" + 
 			"from Zaznam_vyletu zv, ikony_urceni iu, ikony_vylet iv\r\n" + 
 			"			where zv.id_zapis = ?\r\n" + 
@@ -38,14 +38,16 @@ public class JdbcDao implements UserDao {
 		try (Connection con = ds.getConnection(); PreparedStatement stmt = con.prepareStatement(INSERTSINGLERECORDINTODB)) {
 			stmt.setString(1, record.getJmeno_autor());
 			stmt.setString(2, record.getNazev_vylet());
-			stmt.setInt(3, record.getIkony_urceni().getIkony_urceni());
-			stmt.setInt(4, record.getIkony_vylet().getIkony_vylet());
-			stmt.setString(5, record.getOdkaz_misto());
-			stmt.setString(6, record.getOdkaz_restaurace()); 
-			stmt.setInt(7, record.getHodnoceni());
+			stmt.setString(3, record.getZapis());
+			stmt.setInt(4, record.getIkony_urceni().getIkony_urceni());
+			stmt.setInt(5, record.getIkony_vylet().getIkony_vylet());
+			stmt.setString(6, record.getOdkaz_misto());
+			stmt.setString(7, record.getOdkaz_restaurace()); 
+			stmt.setInt(8, record.getHodnoceni());
+			stmt.setString(9, record.getOkres());
 
 			stmt.executeUpdate();
-			con.commit();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
