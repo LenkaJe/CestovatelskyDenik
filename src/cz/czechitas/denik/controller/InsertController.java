@@ -21,6 +21,7 @@ public class InsertController {
 		recordToInsertDb.setHodnoceni(Integer.parseInt(request.getParameter("hodnoceni")));
 		recordToInsertDb.setIkony_urceni(IkonyUrceni.valueOf(request.getParameter("ikona_urceni").toUpperCase()));
 		recordToInsertDb.setIkony_vylet(IkonyVylet.valueOf(request.getParameter("ikona_vylet").toUpperCase()));
+		recordToInsertDb.setOkres(request.getParameter("okres"));
 		
 		JdbcDao jdbcDao = new JdbcDao();
 		jdbcDao.insertSingleRecordIntoDb(recordToInsertDb);

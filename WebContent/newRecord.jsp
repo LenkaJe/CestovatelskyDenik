@@ -154,8 +154,6 @@ body, html {
   float: right; 
 }
 
-/***** CSS Magic to Highlight Stars on Hover *****/
-
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
 .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
@@ -173,7 +171,6 @@ body, html {
 	
 	<form action="DenikServlet" method="get">
 				<div class="hero-image">
-				<img alt="bus" src="bus.jpg">
 				<div class="hero-text">
 				<h1 style="font-size: 25px">Nový zápis</h1>
 				&nbsp;
