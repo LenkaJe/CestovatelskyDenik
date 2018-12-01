@@ -13,5 +13,4 @@ public enum IkonyUrceni {
 		return ikony_urceni;
 	}
 
-	
 }

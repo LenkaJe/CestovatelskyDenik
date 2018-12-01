@@ -19,10 +19,17 @@ public class InsertController {
 		recordToInsertDb.setOdkaz_misto(request.getParameter("odkaz_misto"));
 		recordToInsertDb.setOdkaz_restaurace(request.getParameter("odkaz_restaurace"));
 		recordToInsertDb.setHodnoceni(Integer.parseInt(request.getParameter("hodnoceni")));
-		recordToInsertDb.setIkony_urceni(IkonyUrceni.valueOf(request.getParameter("ikona_urceni").toUpperCase()));
-		recordToInsertDb.setIkony_vylet(IkonyVylet.valueOf(request.getParameter("ikona_vylet").toUpperCase()));
+		if(request.getParameter("ikona_urèeni") == null) {
+			recordToInsertDb.setIkony_urceni(IkonyUrceni.DEFAULT);
+		} else {
+			recordToInsertDb.setIkony_urceni(IkonyUrceni.valueOf(request.getParameter("ikona_urceni").toUpperCase()));
+		}
+		if(request.getParameter("ikona_vylet") == null) {
+			recordToInsertDb.setIkony_vylet(IkonyVylet.DEFAULT);
+		} else { recordToInsertDb.setIkony_vylet(IkonyVylet.valueOf(request.getParameter("ikona_vylet").toUpperCase()));
+		}
 		recordToInsertDb.setOkres(request.getParameter("okres"));
-		
+		System.out.println(recordToInsertDb);
 		JdbcDao jdbcDao = new JdbcDao();
 		jdbcDao.insertSingleRecordIntoDb(recordToInsertDb);
 		System.out.println("debug_Verèa insert controller");
