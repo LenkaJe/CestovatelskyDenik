@@ -23,8 +23,6 @@ public class InsertController {
 		recordToInsertDb.setIkony_vylet(IkonyVylet.valueOf(request.getParameter("ikona_vylet").toUpperCase()));
 		recordToInsertDb.setOkres(request.getParameter("okres"));
 		
-	
-		
 		JdbcDao jdbcDao = new JdbcDao();
 		jdbcDao.insertSingleRecordIntoDb(recordToInsertDb);
 		System.out.println("debug_Verèa insert controller");
