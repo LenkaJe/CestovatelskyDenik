@@ -19,7 +19,7 @@ public class InsertController {
 		recordToInsertDb.setOdkaz_misto(request.getParameter("odkaz_misto"));
 		recordToInsertDb.setOdkaz_restaurace(request.getParameter("odkaz_restaurace"));
 		recordToInsertDb.setHodnoceni(Integer.parseInt(request.getParameter("hodnoceni")));
-		if(request.getParameter("ikona_urèeni") == null) {
+		if(request.getParameter("ikona_urceni") == null) {
 			recordToInsertDb.setIkony_urceni(IkonyUrceni.DEFAULT);
 		} else {
 			recordToInsertDb.setIkony_urceni(IkonyUrceni.valueOf(request.getParameter("ikona_urceni").toUpperCase()));
