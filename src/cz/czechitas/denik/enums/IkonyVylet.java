@@ -1,7 +1,7 @@
 package cz.czechitas.denik.enums;
 
 public enum IkonyVylet {
-	HRAD(1), KOSTEL(2), ROZHLEDNA(3), LES(4), HORY(5), MESTO(6);
+	DEFAULT(0), HRAD(1), KOSTEL(2), ROZHLEDNA(3), LES(4), HORY(5), MESTO(6);
 
 	private final int ikony_vylet;
 
