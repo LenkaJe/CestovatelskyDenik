@@ -157,6 +157,7 @@
         <th class ="tdclass"> Jméno autora </th>
         <th class ="tdclass"> Okres </th>
         <th class ="tdclass"> Hodnocení </th>
+        <th class ="tdclass"> Výlet vhodný pro </th>
         <th class ="tdclass"> Zobraz detail </th>
        </tr>
         <% RecordList recordList = (RecordList) request.getAttribute("recordList");
@@ -169,7 +170,7 @@
         <td class ="tdclass"><%=zapis.getJmeno_autor()%></td>
         <td class ="tdclass"><%=zapis.getOkres() %> </td>
         <td class ="tdclass"><%=zapis.getHodnoceni()%> </td>
-     
+     	<td class ="tdclass"><%=zapis.getIkony_urceni()%> </td>
         <td class ="tdclass"><input type="radio" id="id_zapis" name="id_zapis" value="<%=zapis.getIdzapis()%>"></td>
         <%}}%>
    
