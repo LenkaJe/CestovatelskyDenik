@@ -75,17 +75,23 @@ public class JdbcDao implements UserDao {
 	 String zapis = null;
 	 String odkaz_misto = null;
 	 String odkaz_restaurace = null;
+	 int ikony_vylet = 0;
+	 int ikony_urceni = 0;
 	 String okres = null;
 	 int hodnoceni = 0;
 	DataSource ds = getDataSource(); // volam metodu getDataSource 
 		try (Connection con = ds.getConnection(); PreparedStatement stmt = con.prepareStatement(LOADSINGLERECORD)) {
+			stmt.setInt(1, id_zapis);
 			ResultSet rs = stmt.executeQuery();
+			rs.next();
 			 id_zapis = rs.getInt("id_zapis");
 			 jmeno_autor = rs.getString("jmeno_autor");
 			 nazev_vylet = rs.getString("nazev_vylet");
 			 zapis = rs.getString("zapis");
 			 odkaz_misto = rs.getString("odkaz_misto");
 			 odkaz_restaurace =rs.getString("odkaz_restaurace");
+			 ikony_vylet = rs.getInt("ikony_vylet");
+			 ikony_urceni = rs.getInt("ikony_urceni");
 			 okres = rs.getString("okres");
 			 hodnoceni = rs.getInt("hodnoceni");
 			
@@ -98,9 +104,10 @@ public class JdbcDao implements UserDao {
 		record.setZapis(zapis);
 		record.setOdkaz_misto(odkaz_misto);
 		record.setOdkaz_restaurace(odkaz_restaurace);
+		record.setIkony_vylet(ikony_vylet);
 		record.setOkres(okres);
 		record.setHodnoceni(hodnoceni);
-		
+		System.out.println(record.toString());
 		return record;
 	}
 

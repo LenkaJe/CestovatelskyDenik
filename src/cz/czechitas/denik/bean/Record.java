@@ -100,6 +100,14 @@ public class Record {
 	public void setOkres(String okres) {
 		this.okres = okres;
 	}
+
+	@Override
+	public String toString() {
+		return "Record [idzapis=" + idzapis + ", jmeno_autor=" + jmeno_autor + ", nazev_vylet=" + nazev_vylet
+				+ ", zapis=" + zapis + ", ikony_urceni=" + ikony_urceni + ", ikony_vylet=" + ikony_vylet
+				+ ", odkaz_misto=" + odkaz_misto + ", odkaz_restaurace=" + odkaz_restaurace + ", okres=" + okres
+				+ ", hodnoceni=" + hodnoceni + "]";
+	}
 	
 	
 	

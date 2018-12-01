@@ -16,7 +16,7 @@
       }
 
       .hero-image {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/more.jpg");
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("bus.jpg");
         height: 50%;
         background-position: center;
         background-repeat: no-repeat;
@@ -155,18 +155,20 @@
         <tr>
         <th class ="tdclass"> Název výletu </th>
         <th class ="tdclass"> Jméno autora </th>
-        <th class ="tdclass"> Zápis </th>
+        <th class ="tdclass"> Okres </th>
+        <th class ="tdclass"> Hodnocení </th>
         <th class ="tdclass"> Zobraz detail </th>
        </tr>
         <% RecordList recordList = (RecordList) request.getAttribute("recordList");
-       if (recordList != null) {
+        if (recordList != null) {
         ArrayList <Record> list = recordList.getListOfRecordsFromDb();
         for (Record zapis : list){ 
          %>
         <tr>
         <td class ="tdclass"><%=zapis.getNazev_vylet()%></td>
         <td class ="tdclass"><%=zapis.getJmeno_autor()%></td>
-        <td class ="tdclass"><%=zapis.getZapis()%> </td>
+        <td class ="tdclass"><%=zapis.getOkres() %> </td>
+        <td class ="tdclass"><%=zapis.getHodnoceni()%> </td>
      
         <td class ="tdclass"><input type="radio" id="id_zapis" name="id_zapis" value="<%=zapis.getIdzapis()%>"></td>
         <%}}%>
