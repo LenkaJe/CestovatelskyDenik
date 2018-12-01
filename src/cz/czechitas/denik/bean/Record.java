@@ -5,7 +5,7 @@ import cz.czechitas.denik.enums.IkonyVylet;
 
 public class Record {
 
-	private Integer idzapis;
+	private Integer id_zapis;
 	private String jmeno_autor;
 	private String nazev_vylet;
 	private String zapis;
@@ -25,7 +25,7 @@ public class Record {
 	public Record(Integer idzapis, String jmeno_autor, String nazev_vylet, String zapis, IkonyUrceni ikony_urceni,
 			IkonyVylet ikony_vylet, String odkaz_misto, String odkaz_restaurace, String okres, Integer hodnoceni) {
 		super();
-		this.idzapis = idzapis;
+		this.id_zapis = idzapis;
 		this.jmeno_autor = jmeno_autor;
 		this.nazev_vylet = nazev_vylet;
 		this.zapis = zapis;
@@ -38,10 +38,10 @@ public class Record {
 
 
 	public Integer getIdzapis() {
-		return idzapis;
+		return id_zapis;
 	}
 	public void setIdzapis(Integer idzapis) {
-		this.idzapis = idzapis;
+		this.id_zapis = idzapis;
 	}
 	public String getJmeno_autor() {
 		return jmeno_autor;
