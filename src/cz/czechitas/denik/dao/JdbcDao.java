@@ -90,8 +90,6 @@ public class JdbcDao implements UserDao {
 			 zapis = rs.getString("zapis");
 			 odkaz_misto = rs.getString("odkaz_misto");
 			 odkaz_restaurace =rs.getString("odkaz_restaurace");
-			 ikony_vylet = rs.getInt("ikony_vylet");
-			 ikony_urceni = rs.getInt("ikony_urceni");
 			 okres = rs.getString("okres");
 			 hodnoceni = rs.getInt("hodnoceni");
 			
@@ -104,7 +102,6 @@ public class JdbcDao implements UserDao {
 		record.setZapis(zapis);
 		record.setOdkaz_misto(odkaz_misto);
 		record.setOdkaz_restaurace(odkaz_restaurace);
-		record.setIkony_vylet(ikony_vylet);
 		record.setOkres(okres);
 		record.setHodnoceni(hodnoceni);
 		System.out.println(record.toString());

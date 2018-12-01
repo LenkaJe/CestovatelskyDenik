@@ -22,10 +22,10 @@ public class Record {
 
 	}
 	
-	public Record(Integer idzapis, String jmeno_autor, String nazev_vylet, String zapis, IkonyUrceni ikony_urceni,
+	public Record(Integer id_zapis, String jmeno_autor, String nazev_vylet, String zapis, IkonyUrceni ikony_urceni,
 			IkonyVylet ikony_vylet, String odkaz_misto, String odkaz_restaurace, String okres, Integer hodnoceni) {
 		super();
-		this.id_zapis = idzapis;
+		this.id_zapis = id_zapis;
 		this.jmeno_autor = jmeno_autor;
 		this.nazev_vylet = nazev_vylet;
 		this.zapis = zapis;
@@ -103,7 +103,7 @@ public class Record {
 
 	@Override
 	public String toString() {
-		return "Record [idzapis=" + idzapis + ", jmeno_autor=" + jmeno_autor + ", nazev_vylet=" + nazev_vylet
+		return "Record [id_zapis=" + id_zapis + ", jmeno_autor=" + jmeno_autor + ", nazev_vylet=" + nazev_vylet
 				+ ", zapis=" + zapis + ", ikony_urceni=" + ikony_urceni + ", ikony_vylet=" + ikony_vylet
 				+ ", odkaz_misto=" + odkaz_misto + ", odkaz_restaurace=" + odkaz_restaurace + ", okres=" + okres
 				+ ", hodnoceni=" + hodnoceni + "]";
