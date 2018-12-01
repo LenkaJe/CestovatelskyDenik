@@ -33,6 +33,7 @@ public class Record {
 		this.ikony_vylet = ikony_vylet;
 		this.odkaz_misto = odkaz_misto;
 		this.odkaz_restaurace = odkaz_restaurace;
+		this.okres = okres;
 		this.hodnoceni = hodnoceni;
 	}
 
