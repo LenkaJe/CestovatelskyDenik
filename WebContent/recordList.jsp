@@ -152,7 +152,7 @@
     Projdete si záznamy a inspirujte se na cesty <br>
  <form action="DenikServlet" method="get">  
  <select name="okres">
- 				<option value="#">Vyber okres</option>
+ 				<option value="default">Vyber okres</option>
      			<option value="Benešov">Benešov</option>
 				<option value="Beroun">Beroun</option>
 				<option value="Blansko">Blansko </option>
@@ -225,13 +225,13 @@
 				<option value="Žďár nad Sázavou">Žďár nad Sázavou</option>
 			</select>
 			<select name="ikony_urceni">
- 				<option value="#">Vhodné pro</option>
+ 				<option value="default">Vhodné pro</option>
      			<option value="pes">PES</option>
 				<option value="dite">DÍTĚ</option>
 				<option value="invalida">INVALIDA </option>
 			</select>
-				<select name="ikony_vyletu">
- 				<option value="#">Hlavní atrakce výletu</option>
+				<select name="ikony_vylet">
+ 				<option value="default">Hlavní atrakce výletu</option>
      			<option value="hrad">HRAD</option>
 				<option value="kostel">KOSTEL</option>
 				<option value="rozhledna">ROZHLEDNA</option>
@@ -240,7 +240,7 @@
 				<option value="mesto">MESTO</option>
 			</select>
 				<select name="hodnoceni">
- 				<option value="#">Hodnocení</option>
+ 				<option value="0">Hodnocení</option>
      			<option value="1">1 hvězda</option>
 				<option value="2">2 hvězdy</option>
 				<option value="3">3 hvězda</option>
@@ -256,6 +256,7 @@
         <th class ="tdclass"> Okres </th>
         <th class ="tdclass"> Hodnocení </th>
         <th class ="tdclass"> Výlet vhodný pro </th>
+        <th class ="tdclass"> Hlavní atrakce výletu </th>
         <th class ="tdclass"> Zobraz detail </th>
        </tr>
         <% RecordList recordList = (RecordList) request.getAttribute("recordList");
@@ -269,6 +270,7 @@
         <td class ="tdclass"><%=zapis.getOkres() %> </td>
         <td class ="tdclass"><%=zapis.getHodnoceni()%> </td>
      	<td class ="tdclass"><%=zapis.getIkony_urceni()%> </td>
+     	<td class ="tdclass"><%=zapis.getIkony_vylet()%> </td>
         <td class ="tdclass"><input type="radio" id="id_zapis" name="id_zapis" value="<%=zapis.getIdzapis()%>"></td>
         <%}}%>
    

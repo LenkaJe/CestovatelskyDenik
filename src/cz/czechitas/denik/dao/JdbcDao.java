@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -22,6 +23,7 @@ public class JdbcDao implements UserDao {
 			" from Zaznam_vyletu zv, ikony_urceni iu, ikony_vylet iv\r\n" + 
 			" where zv.ikony_urceni = iu.id_ikony_urceni\r\n" + 
 			" and zv.ikony_vylet = iv.id_ikony_vylet";
+	
 	private static final String INSERTSINGLERECORDINTODB = "INSERT INTO Zaznam_vyletu (jmeno_autor,nazev_vylet,zapis, "
 			+ "ikony_urceni,ikony_vylet,odkaz_misto, odkaz_restaurace, hodnoceni, okres) "
 			+ "VALUE (?,?,?,?,?,?,?,?,?)";
@@ -31,10 +33,10 @@ public class JdbcDao implements UserDao {
 			"			and zv.ikony_urceni = iu.id_ikony_urceni\r\n" + 
 			"			and zv.ikony_vylet = iv.id_ikony_vylet";
 	
+	
 	@Override
 	public boolean insertSingleRecordIntoDb(Record record) {
-
-		DataSource ds = getDataSource();
+			DataSource ds = getDataSource();
 		try (Connection con = ds.getConnection(); PreparedStatement stmt = con.prepareStatement(INSERTSINGLERECORDINTODB)) {
 			stmt.setString(1, record.getJmeno_autor());
 			stmt.setString(2, record.getNazev_vylet());
@@ -121,6 +123,44 @@ public class JdbcDao implements UserDao {
 		System.out.println(record.toString());
 		return record;
 	}
+	
+	public RecordList loadFilteredRecord(String okres, IkonyVylet ikony_vylet, IkonyUrceni ikony_urceni, int hodnoceni) {
+		String FilterALLStatement = LOADALLRECORDSFROMDB;
+		RecordList recordList = new RecordList();
+		ArrayList<Record> listOfRecordsFromDb = new ArrayList<>();
+		DataSource ds = getDataSource();
+	
+		if (!okres.contains("default")){
+			FilterALLStatement = FilterALLStatement + " and zv.okres = '" + okres + "'";	
+		}
+		if (ikony_vylet != IkonyVylet.DEFAULT){
+			FilterALLStatement = FilterALLStatement + " and iv.hodnoty_ikony_vylet ='"+ ikony_vylet + "'";	
+		}
+		if (ikony_urceni != IkonyUrceni.DEFAULT){
+			FilterALLStatement = FilterALLStatement + " and iu.hodnoty_urceni ='"+ ikony_urceni + "'";	
+		}	
+		if (hodnoceni != 0) {
+			FilterALLStatement = FilterALLStatement + " and zv.hodnoceni = "+ hodnoceni;
+		}
+		System.out.println(FilterALLStatement);			
+		try (Connection con = ds.getConnection(); 
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(FilterALLStatement);){
+			while (rs.next()) {
+				Record record = new Record(rs.getInt("id_zapis"), rs.getString("jmeno_autor"),
+						rs.getString("nazev_vylet"), rs.getString("zapis"), IkonyUrceni.valueOf(rs.getString("iu.hodnoty_urceni").toUpperCase()), IkonyVylet.valueOf(rs.getString("iv.hodnoty_ikony_vylet").toUpperCase()), rs.getString("odkaz_misto"),
+						rs.getString("odkaz_restaurace"), rs.getString("okres"), rs.getInt("hodnoceni"));
+				listOfRecordsFromDb.add(record);
+			
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		recordList.setListOfRecordsFromDb(listOfRecordsFromDb);
+		return recordList;
+
+	}
+	
 
 	private DataSource getDataSource() {
 		try {
