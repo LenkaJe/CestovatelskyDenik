@@ -18,7 +18,7 @@ body, html {
 
 
 .hero-image {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) URL("kroko.jpg")));
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) URL('kroko.jpg')));
 	height: 50%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -172,11 +172,12 @@ body, html {
 	
 	<form action="DenikServlet" method="get">
 				<div class="hero-image">
+				<img alt="bus" src="bus.jpg">
 				<div class="hero-text">
 				<h1 style="font-size: 25px">Nový zápis</h1>
 				&nbsp;
-				<p>Řekni nám o svém výletu o místě, které stojí za to ho
-					navštívit... Pověz co tam bylo nejlepší nebo nejhezčí? Doporuč nám
+				<p>Řekni nám o svém výletu na místo, které stojí za to
+					navštívit... Pověz, co tam bylo nejlepší nebo nejhezčí? Doporuč nám
 					kde ti chutnalo ...</p>
 
 				<label><b>Autor</b></label> <input type="text"
@@ -189,12 +190,77 @@ body, html {
 				&nbsp;
 				Vyber okres výletu 
    				<select name="okres">
-     			<option value="Praha">Praha</option>
-      			<option value="Benešov">Benešov</option>
-      			<option value="Beroun">Beroun</option>
-      			<option value="Kladno">Kladno</option>
-   				</select>
-
+     			<option value="Benešov">Benešov</option>
+				<option value="Beroun">Beroun</option>
+				<option value="Blansko">Blansko </option>
+				<option value="Brno-město">Brno-město</option>
+				<option value="Brno-venkov">Brno-venkov</option>
+				<option value="Bruntál">Bruntál</option>
+				<option value="Česká Lípa">Česká Lípa</option>
+				<option value="České Budějovice">České Budějovice</option>
+				<option value="Český Krumlov">Český Krumlov</option>
+				<option value="Děčín">Děčín</option>
+				<option value="Domažlice">Domažlice</option>
+				<option value="Frýdek-Místek">Frýdek-Místek</option>
+				<option value="Havlíčkův Brod">Havlíčkův Brod</option>
+				<option value="Hradec Králové">Hradec Králové</option>
+				<option value="Cheb">Cheb</option>
+				<option value="Chomutov">Chomutov</option>
+				<option value="Chrudim">Chrudim</option>
+				<option value="Jablonec nad Nisou">Jablonec nad Nisou</option>
+				<option value="Jeseník">Jeseník</option>
+				<option value="Jičín">Jičín</option>
+				<option value="Jihlava">Jihlava</option>
+				<option value="Jindřichův Hradec">Jindřichův Hradec</option>
+				<option value="Karlovy Vary">Karlovy Vary</option>
+				<option value="Kladno">Kladno</option>
+				<option value="Klatovy">Klatovy</option>
+				<option value="Kolín">Kolín</option>
+				<option value="Kroměříž">Kroměříž</option>
+				<option value="Kutná Hora">Kutná Hora</option>
+				<option value="Liberec">Liberec</option>
+				<option value="Litoměřice">Litoměřice</option>
+				<option value="Louny">Louny</option>
+				<option value="Mladá Boleslav">Mladá Boleslav</option>
+				<option value="Most">Most</option>
+				<option value="Náchod">Náchod</option>
+				<option value="Nový Jičín">Nový Jičín</option>
+				<option value="Nymburk">Nymburk</option>
+				<option value="Opava">Opava</option>
+				<option value="Ostrava-město">Ostrava-město</option>
+				<option value="Pardubice">Pardubice</option>
+				<option value="Pelhřimov">Pelhřimov</option>
+				<option value="Písek">Písek</option>
+				<option value="Plzeň-jih">Plzeň-jih</option>
+				<option value="Plzeň-město">Plzeň-město</option>
+				<option value="Plzeň-sever">Plzeň-sever</option>
+				<option value="Praha-východ"> Praha-východ</option>
+				<option value="Praha-západ">Praha-západ</option>
+				<option value="Prachatice">Prachatice</option>
+				<option value="Prostějov">Prostějov</option>
+				<option value="Přerov">Přerov</option>
+				<option value="Příbram">Příbram</option>
+				<option value="Rakovník">Rakovník</option>
+				<option value="Rokycany">Rokycany </option>
+				<option value="Rychnov nad Kněžnou">Rychnov nad Kněžnou</option>
+				<option value="Semily">Semily</option>
+				<option value="Sokolov">Sokolov</option>
+				<option value="Strakonice">Strakonice</option>
+				<option value="Svitavy">Svitavy</option>
+				<option value="Tábor">Tábor</option>
+				<option value="Tachov">Tachov</option>
+				<option value="Teplice">Teplice</option>
+				<option value="Trutnov">Trutnov</option>
+				<option value="Třebíč">Třebíč</option>
+				<option value="Uherské Hradiště">Uherské Hradiště</option>
+				<option value="Ústí nad Labem">Ústí nad Labem</option>
+				<option value="Ústí nad Orlicí">Ústí nad Orlicí</option>
+				<option value="Vsetín">Vsetín</option>
+				<option value="Vyškov">Vyškov</option>
+				<option value="Zlín">Zlín</option>
+				<option value="Znojmo">Znojmo</option>
+				<option value="Žďár nad Sázavou">Žďár nad Sázavou</option>
+			</select>
 			</div>
 		</div>
 
