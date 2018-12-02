@@ -25,12 +25,9 @@ body, html {
 
 .hero-obsah {
   text-align: left;
-  position: absolute;
-  top: 75%;
-  left: 30%;
-  transform: translate(-100%, -50%);
+  margin: 10px 0;
   color: #5F8E31;
-  padding: 30px;
+  padding: 20px;
   font-size: 22px;
   font-family: Calibri;
 }
