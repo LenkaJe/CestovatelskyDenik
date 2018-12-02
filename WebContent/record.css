@@ -1,0 +1,64 @@
+@charset "UTF-8";
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Calibri, Calibri, sans-serif;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("zazn.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-obsah {
+  text-align: left;
+  position: absolute;
+  top: 75%;
+  left: 30%;
+  transform: translate(-100%, -50%);
+  color: #5F8E31;
+  padding: 30px;
+  font-size: 22px;
+  font-family: Calibri;
+}
+.hero-vyraz {
+	font-weight:bold;
+	color:#6A7374;
+	text-transform:uppercase;
+}
+
+.hero-text button {
+  border: 2px solid ;
+  display: inline-block;
+  padding: 10px 25px;
+  color: transparent;
+  background-color:transparent;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #61544E;
+  color: white;
+}
+.hero-text button {
+  background-color: transparent;
+  color: floralwhite;    
+}
+
+
+
+

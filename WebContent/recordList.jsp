@@ -10,8 +10,7 @@
 <meta charset="UTF-8">
 <title>Seznam cestovatelských zápisů</title>
 <style>
-<
-style>body, html {
+body, html {
 	height: 100%;
 	margin: 0;
 	font-family: Calibri, Calibri, sans-serif;
@@ -25,6 +24,14 @@ style>body, html {
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: relative;
+}
+.hero-filtr {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolut;
+	text-align: center;
 }
 
 .hero-text {
@@ -67,8 +74,13 @@ style>body, html {
 
 .navbar {
 	overflow: hidden;
-	background-color: #61544E;
+	background-color: #7B7B7B;
 	font-family: calibri, calibri, sans-serif;
+	color: white;
+}
+
+.navbar:hover {
+background-color:#3C3C3C;
 }
 
 .navbar a {
@@ -91,7 +103,7 @@ style>body, html {
 	outline: none;
 	color: white;
 	padding: 14px 16px;
-	background-color: #61544E;
+	background-color: none;
 	font-family: inherit;
 	margin: 0;
 }
@@ -124,10 +136,13 @@ style>body, html {
 
 .dropdown:hover .dropdown-content {
 	display: block;
+	
 }
 
 .tableclass {
 	border: 1px solid black;
+	position: centre;
+	
 }
 
 .tableposition {
@@ -135,10 +150,50 @@ style>body, html {
 	top: 50%;
 	left: 50%;
 }
+  .tableposition-button {
+        border: 2px solid ;
+        display: inline-block;
+        padding: 10px 25px;
+        color: transparent;
+        background-color:transparent;
+        text-align: center;
+        cursor: pointer;
+        
+      }
+      .tableposition-button:hover {
+	background-color: #61544E;
+	color: white;
+}
+
+.tableposition-button {
+	background-color: transparent;
+	color: floralwhite;
+}
 
 .tdclass {
 	border: 1px solid black
 }
+
+.pure-table {
+position: center;
+color:#61544E;
+text-align: center;
+background-position: center;
+width: 800px; margin-left: auto; margin-right: auto
+
+}
+.filtruj-button {
+border: 2px solid #61544E;
+	display: block;
+	padding: 10px 25px;
+	color: #61544E;
+	background-color: transparent;
+	text-align: center;
+	float:right;
+	cursor: pointer;
+
+}
+
 </style>
 </head>
 <body>
@@ -147,18 +202,18 @@ style>body, html {
 		<div class="hero-text">
 			<h1 style="font-size: 25px">Seznam cestovatelských zápisů</h1>
 			&nbsp;
-			<p>Komunita vybudovaná cestovateli a výletníky pro cestovatele,
-				kteří se chtějí podělit o své zážitky</p>
+			<p>Projdete si záznamy a inspirujte se na cesty </p>
 
 			<button>Nový záznam</button>
 		</div>
 	</div>
 	<p></p>
 
-	<div class="tableposition">
-		Projdete si záznamy a inspirujte se na cesty <br>
+	
+	<div class="hero-filtr">Vyber podle priorit 
+          <i class="fa fa-caret-down"></i>
 		<form action="DenikServlet" method="get">
-			<select name="okres">
+			<select class="navbar" name="okres">
 				<option value="default">Vyber okres</option>
 				<option value="Benešov">Benešov</option>
 				<option value="Beroun">Beroun</option>
@@ -230,12 +285,12 @@ style>body, html {
 				<option value="Zlín">Zlín</option>
 				<option value="Znojmo">Znojmo</option>
 				<option value="Žďár nad Sázavou">Žďár nad Sázavou</option>
-			</select> <select name="ikony_urceni">
+			</select> <select class="navbar" name="ikony_urceni">
 				<option value="default">Vhodné pro</option>
 				<option value="pes">PES</option>
 				<option value="dite">DÍTĚ</option>
 				<option value="invalida">INVALIDA</option>
-			</select> <select name="ikony_vylet">
+			</select> <select class="navbar" name="ikony_vylet">
 				<option value="default">Hlavní atrakce výletu</option>
 				<option value="hrad">HRAD</option>
 				<option value="kostel">KOSTEL</option>
@@ -243,25 +298,27 @@ style>body, html {
 				<option value="les">LES</option>
 				<option value="hory">HORY</option>
 				<option value="mesto">MESTO</option>
-			</select> <select name="hodnoceni">
+			</select> <select class="navbar" name="hodnoceni">
 				<option value="0">Hodnocení</option>
 				<option value="1">1 hvězda</option>
 				<option value="2">2 hvězdy</option>
 				<option value="3">3 hvězda</option>
 				<option value="4">4 hvězdy</option>
 				<option value="5">5 hvězd</option>
-			</select>
-			<button type="submit" name="action" value="filter">Filtruj</button>
+			</select>		
+			<button class= "tableposition-button" type="submit" name="action" value="filter">Filtruj</button>
+			</div>
+			
 
-			<table class="tableclass">
+			<table class="pure-table">
 				<tr>
-					<th class="tdclass">Název výletu</th>
-					<th class="tdclass">Jméno autora</th>
-					<th class="tdclass">Okres</th>
-					<th class="tdclass">Hodnocení</th>
-					<th class="tdclass">Výlet vhodný pro</th>
-					<th class="tdclass">Hlavní atrakce výletu</th>
-					<th class="tdclass">Zobraz detail</th>
+					<th class="pure-table">Název výletu</th>
+					<th class="pure-table">Jméno autora</th>
+					<th class="pure-table">Okres</th>
+					<th class="pure-table">Hodnocení</th>
+					<th class="pure-table">Výlet vhodný pro</th>
+					<th class="pure-table">Hlavní atrakce výletu</th>
+					<th class="pure-table">Zobraz detail</th>
 				</tr>
 				<%
 					RecordList recordList = (RecordList) request.getAttribute("recordList");
@@ -270,11 +327,11 @@ style>body, html {
 						for (Record zapis : list) {
 				%>
 				<tr>
-					<td class="tdclass"><%=zapis.getNazev_vylet()%></td>
-					<td class="tdclass"><%=zapis.getJmeno_autor()%></td>
-					<td class="tdclass"><%=zapis.getOkres()%></td>
-					<td class="tdclass"><%=zapis.getHodnoceni()%></td>
-					<td class="tdclass">
+					<td class="pure-table"><%=zapis.getNazev_vylet()%></td>
+					<td class="pure-table"><%=zapis.getJmeno_autor()%></td>
+					<td class="pure-table"><%=zapis.getOkres()%></td>
+					<td class="pure-table"><%=zapis.getHodnoceni()%></td>
+					<td class="pure-table">
 						<%
 							if (zapis.getIkony_urceni().toString() != "DEFAULT") {
 						%> <%=zapis.getIkony_urceni()%> <%
@@ -282,14 +339,14 @@ style>body, html {
  %>
 					</td>
 
-					<td class="tdclass">
+					<td class="pure-table">
 						<%
 							if (zapis.getIkony_vylet().toString() != "DEFAULT") {
 						%> <%=zapis.getIkony_vylet()%> <%
  	}
  %>
 					</td>
-					<td class="tdclass"><input type="radio" id="id_zapis"
+					<td class="pure-table"><input type="radio" id="id_zapis"
 						name="id_zapis" value="<%=zapis.getIdzapis()%>"></td>
 					<%
 						}
@@ -300,9 +357,10 @@ style>body, html {
 
 			</table>
 
-			<button type="submit" name="action" value="detail">Zobraz
+			<button class = "filtruj-button" type="submit" name="action" value="detail">Zobraz
 				detail zápisu</button>
 		</form>
 	</div>
+	
 </body>
 </html>
