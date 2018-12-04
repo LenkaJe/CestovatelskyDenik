@@ -211,6 +211,7 @@ i {
 						type="text" placeholder="Vlož název místa, které jsi navštívil"
 						name="nazev_vylet" required>
 				</p>
+				<button type="button" onclick="location.href='intro.jsp';">Domů</button>
 				&nbsp; Vyber okres výletu <select name="okres">
 					<option value="Benešov">Benešov</option>
 					<option value="Beroun">Beroun</option>
@@ -302,6 +303,7 @@ i {
 			<input type="text" name=odkaz_restaurace>
 		</div>
 	</div>
+	
 
 	<div class="radio">
 
