@@ -191,6 +191,20 @@ i {
 	color: #C7986C;
 	margin: 130px 0 50px 0;
 }
+
+.domu {
+position: absolute;
+	top: -5%;
+	left: 100%;
+	border: 2px solid #61544E;
+	display: block;
+	padding: 10px 25px;
+	color: #C7986C;
+	background-color: transparent;
+	text-align: center;
+	cursor: pointer;
+	margin: 50px 0 0 0;}
+	
 </style>
 </head>
 
@@ -211,7 +225,7 @@ i {
 						type="text" placeholder="Vlož název místa, které jsi navštívil"
 						name="nazev_vylet" required>
 				</p>
-				<button type="button" onclick="location.href='intro.jsp';">Domů</button>
+				<button class = "domu" type="button" onclick="location.href='intro.jsp';">Domů</button>
 				&nbsp; Vyber okres výletu <select name="okres">
 					<option value="Benešov">Benešov</option>
 					<option value="Beroun">Beroun</option>
