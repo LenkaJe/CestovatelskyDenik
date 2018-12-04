@@ -203,8 +203,7 @@ border: 2px solid #61544E;
 			<h1 style="font-size: 25px">Seznam cestovatelských zápisů</h1>
 			&nbsp;
 			<p>Projdete si záznamy a inspirujte se na cesty </p>
-
-			<button>Nový záznam</button>
+			 <button type="button" onclick="location.href='newRecord.jsp';">Nový zápis</button> 
 		</div>
 	</div>
 	<p></p>
