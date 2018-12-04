@@ -163,18 +163,13 @@ i {
 	float: right;
 }
 
-.rating>input:checked ~ label, /* show gold star when clicked */ .rating:not
-	 (:checked ) >label:hover, /* hover current star */ .rating:not (:checked
-	 ) >label:hover ~ label {
-	color: #FFD700;
-} /* hover previous stars in list */
-.rating>input:checked+label:hover,
-	/* hover current star when changing rating */ .rating>input:checked ~
-	label:hover, .rating>label:hover ~ input:checked ~ label,
-	/* lighten current selection */ .rating>input:checked ~ label:hover ~
-	label {
-	color: #FFED85;
-}
+.rating>input:checked ~ label, /* show gold star when clicked */ 
+.rating:not(:checked)>label:hover, /* hover current star */ 
+.rating:not(:checked)>label:hover ~ label {color: #FFD700;} /* hover previous stars in list */
+.rating>input:checked+label:hover,/* hover current star when changing rating */ 
+.rating>input:checked ~label:hover, 
+.rating>label:hover ~ input:checked ~ label,/* lighten current selection */ 
+.rating>input:checked ~ label:hover ~label {color: #FFED85;}
 
 .filtruj-button {
 	border: 2px solid #61544E;
